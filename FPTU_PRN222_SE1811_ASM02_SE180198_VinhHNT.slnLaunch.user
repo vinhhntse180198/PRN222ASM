@@ -1,0 +1,23 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "CKFS_Management.RazorwebApp.VinhHNT\\CKFS_Management.RazorwebApp.VinhHNT.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "CKFS_Management.Entities.VinhHNT\\CKFS_Management.Entities.VinhHNT.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "CKFS_Management.Repositories.VinhHNT\\CKFS_Management.Repositories.VinhHNT.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "CKFS_Management.Services.VinhHNT\\CKFS_Management.Services.VinhHNT.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

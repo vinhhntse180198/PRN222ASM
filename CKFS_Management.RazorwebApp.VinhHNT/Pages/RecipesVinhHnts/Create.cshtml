@@ -1,0 +1,80 @@
+@page
+@model CKFS_Management.RazorwebApp.VinhHNT.Pages.RecipesVinhHnts.CreateModel
+@{
+    ViewData["Title"] = "Tạo công thức";
+}
+
+<div class="container py-4">
+    <div class="card card-form-ckfs">
+        <div class="card-header text-white" style="background: var(--ckfs-primary);">
+            <i class="fas fa-plus-circle me-2"></i>Tạo công thức mới
+        </div>
+        <div class="card-body p-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="RecipeVinhHnt.ProductId" class="form-label fw-semibold">Sản phẩm</label>
+                        <select asp-for="RecipeVinhHnt.ProductId" class="form-select" asp-items="Model.ProductIdList">
+                            <option value="">-- Chọn sản phẩm --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="RecipeVinhHnt.IngredientId" class="form-label fw-semibold">Nguyên liệu</label>
+                        <select asp-for="RecipeVinhHnt.IngredientId" class="form-select" asp-items="Model.IngredientIdList">
+                            <option value="">-- Chọn nguyên liệu --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="RecipeVinhHnt.Quantity" class="form-label fw-semibold">Số lượng</label>
+                        <input asp-for="RecipeVinhHnt.Quantity" class="form-control" type="number" step="0.01" />
+                        <span asp-validation-for="RecipeVinhHnt.Quantity" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="RecipeVinhHnt.Unit" class="form-label fw-semibold">Đơn vị</label>
+                        <input asp-for="RecipeVinhHnt.Unit" class="form-control" />
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="RecipeVinhHnt.Version" class="form-label fw-semibold">Phiên bản</label>
+                        <input asp-for="RecipeVinhHnt.Version" class="form-control" type="number" />
+                    </div>
+                </div>
+                <div class="d-flex gap-2 pt-2">
+                    <a asp-page="Index" class="btn btn-ckfs-outline">Hủy</a>
+                    <button type="submit" class="btn btn-ckfs-primary">Lưu (HTTP)</button>
+                    <button type="button" id="btnHubCreate" class="btn btn-success">Tạo qua SignalR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="toastCreate" class="position-fixed top-0 end-0 p-3" style="z-index: 9999;"></div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.jsdelivr.net/npm/@@microsoft/signalr@8.0.0/dist/browser/signalr.min.js"></script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder().withUrl("/recipesHub").build();
+        connection.on("CreateSuccess", function(payload) {
+            const toast = document.getElementById("toastCreate");
+            toast.innerHTML = '<div class="alert alert-success shadow-sm"><i class="fas fa-check-circle me-2"></i>Tạo công thức thành công! Đang chuyển...</div>';
+            setTimeout(function() { window.location.href = "/RecipesVinhHnts"; }, 800);
+        });
+        connection.on("ReceiveErrorRecipe", (msg) => alert("Lỗi: " + msg));
+        connection.start().catch(err => console.error(err));
+        document.getElementById("btnHubCreate").addEventListener("click", function(e) {
+            e.preventDefault();
+            const data = {
+                ProductId: parseInt(document.querySelector("[name='RecipeVinhHnt.ProductId']").value) || null,
+                IngredientId: parseInt(document.querySelector("[name='RecipeVinhHnt.IngredientId']").value) || null,
+                Quantity: parseFloat(document.querySelector("[name='RecipeVinhHnt.Quantity']").value) || 0,
+                Unit: document.querySelector("[name='RecipeVinhHnt.Unit']").value || null,
+                Version: parseInt(document.querySelector("[name='RecipeVinhHnt.Version']").value) || null
+            };
+            connection.invoke("HubCreate_Recipe", data).catch(err => console.error(err));
+        });
+    </script>
+}

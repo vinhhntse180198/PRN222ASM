@@ -1,0 +1,55 @@
+@page
+@model CKFS_Management.RazorwebApp.VinhHNT.Pages.Account.LoginModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập - CKFS Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        :root { --ckfs-primary: #2563eb; --ckfs-primary-dark: #1d4ed8; --ckfs-hero-start: #dbeafe; --ckfs-hero-end: #eff6ff; }
+        body { background: linear-gradient(135deg, var(--ckfs-hero-start) 0%, var(--ckfs-hero-end) 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: 'Segoe UI', system-ui, sans-serif; }
+        .login-card { background: #fff; border-radius: 16px; box-shadow: 0 10px 40px rgba(37, 99, 235, .12); padding: 2.5rem; max-width: 420px; width: 100%; border: 1px solid rgba(37, 99, 235, .08); }
+        .login-card .brand { color: #1e3a5f; font-weight: 700; font-size: 1.5rem; }
+        .btn-login-ckfs { background: var(--ckfs-primary); color: #fff; font-weight: 600; border-radius: 10px; padding: 0.75rem; border: none; }
+        .btn-login-ckfs:hover { background: var(--ckfs-primary-dark); color: #fff; }
+        .form-control { border-radius: 10px; border: 1px solid #e2e8f0; }
+        .form-control:focus { border-color: var(--ckfs-primary); box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, .2); }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <div class="text-center mb-4">
+            <i class="fas fa-utensils fa-3x text-primary mb-3"></i>
+            <div class="brand">CKFS Management</div>
+            <p class="text-muted small mb-0">Đăng nhập hệ thống</p>
+        </div>
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show py-2">
+                <i class="fas fa-exclamation-circle me-2"></i> @TempData["Message"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        <form method="post">
+            <div class="form-floating mb-3 text-dark">
+                <input type="text" class="form-control" asp-for="UserName" placeholder="username" required />
+                <label><i class="fas fa-user me-2 text-muted"></i>Tên đăng nhập</label>
+            </div>
+            <div class="form-floating mb-4 text-dark">
+                <input type="password" class="form-control" asp-for="Password" placeholder="Password" required />
+                <label><i class="fas fa-lock me-2 text-muted"></i>Mật khẩu</label>
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-login-ckfs btn-lg">ĐĂNG NHẬP</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

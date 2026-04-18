@@ -1,0 +1,66 @@
+@page
+@model CKFS_Management.RazorwebApp.VinhHNT.Pages.RecipesVinhHnts.DeleteModel
+@{
+    ViewData["Title"] = "Xóa công thức";
+}
+
+<div class="container py-4" id="deletePageContainer">
+    <div id="toastDelete" class="position-fixed top-0 end-0 p-3" style="z-index: 9999;"></div>
+    <div class="card card-form-ckfs border-danger">
+        <div class="card-header bg-danger text-white">
+            <i class="fas fa-trash-alt me-2"></i>Xóa công thức
+        </div>
+        <div class="card-body p-4" id="deleteCardBody">
+            <div class="alert alert-warning border-0 mb-4">Bạn có chắc muốn xóa công thức này? Hành động không thể hoàn tác.</div>
+            <dl class="row mb-4">
+                <dt class="col-sm-3 text-muted fw-semibold">ID</dt>
+                <dd class="col-sm-9">@Model.RecipeVinhHnt.RecipeId</dd>
+                <dt class="col-sm-3 text-muted fw-semibold">Sản phẩm</dt>
+                <dd class="col-sm-9" id="delProduct">@(Model.RecipeVinhHnt.Product?.Name ?? "-")</dd>
+                <dt class="col-sm-3 text-muted fw-semibold">Nguyên liệu</dt>
+                <dd class="col-sm-9" id="delIngredient">@(Model.RecipeVinhHnt.Ingredient?.Name ?? "-")</dd>
+                <dt class="col-sm-3 text-muted fw-semibold">Số lượng</dt>
+                <dd class="col-sm-9" id="delQty">@Model.RecipeVinhHnt.Quantity @Model.RecipeVinhHnt.Unit</dd>
+            </dl>
+            <form method="post" class="d-inline">
+                <input type="hidden" asp-for="RecipeVinhHnt.RecipeId" />
+                <a asp-page="Index" class="btn btn-ckfs-outline">Hủy</a>
+                <button type="submit" class="btn btn-danger">Xóa (HTTP)</button>
+                <button type="button" id="btnHubDelete" class="btn btn-warning">Xóa qua SignalR</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/@@microsoft/signalr@8.0.0/dist/browser/signalr.min.js"></script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder().withUrl("/recipesHub").build();
+        const recipeId = @Model.RecipeVinhHnt.RecipeId;
+
+        connection.on("DeleteSuccess", function() {
+            document.getElementById('toastDelete').innerHTML = '<div class="alert alert-success shadow-sm"><i class="fas fa-check-circle me-2"></i>Đã xóa thành công! Đang chuyển...</div>';
+            setTimeout(function() { window.location.href = "/RecipesVinhHnts"; }, 800);
+        });
+        connection.on("ReceiveDelete_Recipe", function(deletedId) {
+            if (parseInt(deletedId) !== recipeId) return;
+            document.getElementById('deleteCardBody').innerHTML = '<div class="alert alert-warning"><i class="fas fa-info-circle me-2"></i>Công thức này đã bị xóa từ nơi khác.<br/><a href="/RecipesVinhHnts" class="btn btn-outline-secondary mt-2">Quay lại danh sách</a></div>';
+        });
+        connection.on("ReceiveUpdate_Recipe", function(payload) {
+            if (!payload || Number(payload.recipeId || payload.RecipeId) !== recipeId) return;
+            const r = payload;
+            const p = document.getElementById('delProduct'); if (p) p.textContent = r.productName || r.ProductName || '-';
+            const i = document.getElementById('delIngredient'); if (i) i.textContent = r.ingredientName || r.IngredientName || '-';
+            const q = document.getElementById('delQty'); if (q) q.textContent = (r.quantity != null ? r.quantity : '-') + ' ' + (r.unit || r.Unit || '');
+            document.getElementById('toastDelete').innerHTML = '<div class="alert alert-info shadow-sm alert-dismissible fade show"><i class="fas fa-sync-alt me-2"></i>Công thức vừa được cập nhật từ nơi khác.<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>';
+            setTimeout(function() { document.getElementById('toastDelete').innerHTML = ''; }, 3000);
+        });
+        connection.on("ReceiveErrorRecipe", (msg) => alert("Lỗi: " + msg));
+        connection.start().catch(err => console.error(err));
+
+        document.getElementById("btnHubDelete").addEventListener("click", function(e) {
+            e.preventDefault();
+            connection.invoke("HubDelete_Recipe", recipeId).catch(err => console.error(err));
+        });
+    </script>
+}

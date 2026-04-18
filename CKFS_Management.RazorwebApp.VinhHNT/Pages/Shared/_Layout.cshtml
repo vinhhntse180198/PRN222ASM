@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CKFS Management</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light navbar-ckfs py-3">
+            <div class="container">
+                <a class="navbar-brand navbar-brand-ckfs" asp-page="/Index">CKFS Management</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link nav-link-ckfs" asp-page="/Index">Home</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-ckfs" asp-page="/RecipesVinhHnts/Index">Recipes</a></li>
+                        <li class="nav-item"><a class="nav-link nav-link-ckfs" asp-page="/Privacy">Privacy</a></li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item align-self-center me-2"><span class="nav-link nav-link-ckfs py-0">@User.Identity.Name</span></li>
+                            <li class="nav-item"><a class="btn btn-login-nav" asp-page="/Account/Logout">Đăng xuất</a></li>
+                        }
+                        else
+                        {
+                            <li class="nav-item"><a class="btn btn-login-nav" asp-page="/Account/Login">Login</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="pb-4">
+        @RenderBody()
+    </main>
+    <footer class="footer-ckfs-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <i class="fas fa-book-open fa-lg text-primary"></i>
+                        <span class="footer-brand">CKFS</span>
+                    </div>
+                    <p class="footer-desc">Hệ thống Quản lý Bếp Trung Tâm và Cửa hàng Franchise — Số hóa công thức, kiểm soát chất lượng đồng nhất.</p>
+                </div>
+                <div class="col-lg-3 col-6 mb-4 mb-lg-0">
+                    <h6 class="footer-title">Sản phẩm</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a asp-page="/RecipesVinhHnts/Index">Công thức</a></li>
+                        <li class="mb-2"><a asp-page="/Index">Tính năng</a></li>
+                        <li class="mb-2"><a href="#">Bảng giá</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6 mb-4 mb-lg-0">
+                    <h6 class="footer-title">Hỗ trợ</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="#">Liên hệ</a></li>
+                        <li class="mb-2"><a asp-page="/Privacy">Điều khoản</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center text-lg-start">© 2026 CKFS Management. All rights reserved.</div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

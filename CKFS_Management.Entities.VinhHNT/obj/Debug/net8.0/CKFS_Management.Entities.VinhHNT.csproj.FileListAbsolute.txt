@@ -1,0 +1,12 @@
+e:\PRN222\FPTU_PRN222_SE1811_ASM02_SE180198_VinhHNT\CKFS_Management.Entities.VinhHNT\bin\Debug\net8.0\CKFS_Management.Entities.VinhHNT.deps.json
+e:\PRN222\FPTU_PRN222_SE1811_ASM02_SE180198_VinhHNT\CKFS_Management.Entities.VinhHNT\bin\Debug\net8.0\CKFS_Management.Entities.VinhHNT.dll
+e:\PRN222\FPTU_PRN222_SE1811_ASM02_SE180198_VinhHNT\CKFS_Management.Entities.VinhHNT\bin\Debug\net8.0\CKFS_Management.Entities.VinhHNT.pdb
+e:\PRN222\FPTU_PRN222_SE1811_ASM02_SE180198_VinhHNT\CKFS_Management.Entities.VinhHNT\obj\Debug\net8.0\CKFS_Management.Entities.VinhHNT.GeneratedMSBuildEditorConfig.editorconfig
+e:\PRN222\FPTU_PRN222_SE1811_ASM02_SE180198_VinhHNT\CKFS_Management.Entities.VinhHNT\obj\Debug\net8.0\CKFS_Management.Entities.VinhHNT.AssemblyInfoInputs.cache
+e:\PRN222\FPTU_PRN222_SE1811_ASM02_SE180198_VinhHNT\CKFS_Management.Entities.VinhHNT\obj\Debug\net8.0\CKFS_Management.Entities.VinhHNT.AssemblyInfo.cs
+e:\PRN222\FPTU_PRN222_SE1811_ASM02_SE180198_VinhHNT\CKFS_Management.Entities.VinhHNT\obj\Debug\net8.0\CKFS_Management.Entities.VinhHNT.csproj.CoreCompileInputs.cache
+e:\PRN222\FPTU_PRN222_SE1811_ASM02_SE180198_VinhHNT\CKFS_Management.Entities.VinhHNT\obj\Debug\net8.0\CKFS_Management.Entities.VinhHNT.sourcelink.json
+e:\PRN222\FPTU_PRN222_SE1811_ASM02_SE180198_VinhHNT\CKFS_Management.Entities.VinhHNT\obj\Debug\net8.0\CKFS_Management.Entities.VinhHNT.dll
+e:\PRN222\FPTU_PRN222_SE1811_ASM02_SE180198_VinhHNT\CKFS_Management.Entities.VinhHNT\obj\Debug\net8.0\refint\CKFS_Management.Entities.VinhHNT.dll
+e:\PRN222\FPTU_PRN222_SE1811_ASM02_SE180198_VinhHNT\CKFS_Management.Entities.VinhHNT\obj\Debug\net8.0\CKFS_Management.Entities.VinhHNT.pdb
+e:\PRN222\FPTU_PRN222_SE1811_ASM02_SE180198_VinhHNT\CKFS_Management.Entities.VinhHNT\obj\Debug\net8.0\ref\CKFS_Management.Entities.VinhHNT.dll

@@ -1,0 +1,122 @@
+@page
+@model CKFS_Management.RazorwebApp.VinhHNT.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero-ckfs py-5 py-lg-6">
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <h1 class="hero-title mb-3">
+                    Quản lý Bếp trung tâm và Franchise <span class="highlight">toàn diện</span>
+                </h1>
+                <p class="hero-desc mb-4">
+                    Tự động hóa vận hành, số hóa công thức và kiểm soát chất lượng đồng nhất cho toàn chuỗi cửa hàng với công nghệ hiện đại.
+                </p>
+                <div class="d-flex flex-wrap gap-3 align-items-center mb-3">
+                    <a asp-page="/RecipesVinhHnts/Index" class="btn btn-ckfs-primary">
+                        Bắt đầu ngay <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                    <a asp-page="/RecipesVinhHnts/Index" class="btn btn-ckfs-outline">
+                        <i class="fas fa-play me-2 small"></i>Xem thêm
+                    </a>
+                </div>
+                <div class="d-flex align-items-center gap-2 mt-2">
+                    <span class="hero-dots active"></span>
+                    <span class="hero-dots"></span>
+                    <span class="hero-dots"></span>
+                    <span class="text-muted small ms-2">Hệ thống quản lý công thức & bếp trung tâm cho chuỗi cửa hàng</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-3">Tính năng đột phá cho chuỗi nhà hàng</h2>
+        <p class="section-desc text-center text-secondary mb-5">
+            Hệ thống tích hợp mọi công cụ cần thiết để bạn mở rộng quy mô kinh doanh, đảm bảo tính nhất quán trên toàn hệ thống.
+        </p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card card-ckfs h-100">
+                    <div class="card-body">
+                        <div class="icon-wrap mb-3"><i class="fas fa-book-open"></i></div>
+                        <h5 class="card-title fw-bold">Quản lý công thức</h5>
+                        <p class="card-text text-secondary small mb-0">Số hóa công thức, định lượng nguyên liệu và đồng bộ phiên bản cho toàn chuỗi.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-ckfs h-100">
+                    <div class="card-body">
+                        <div class="icon-wrap mb-3"><i class="fas fa-utensils"></i></div>
+                        <h5 class="card-title fw-bold">Bếp trung tâm</h5>
+                        <p class="card-text text-secondary small mb-0">Kiểm soát quy trình sản xuất, tồn kho và chất lượng từ bếp trung tâm đến từng điểm bán.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-ckfs h-100">
+                    <div class="card-body">
+                        <div class="icon-wrap mb-3"><i class="fas fa-chart-line"></i></div>
+                        <h5 class="card-title fw-bold">Đồng nhất toàn hệ thống</h5>
+                        <p class="card-text text-secondary small mb-0">Đảm bảo hương vị và chất lượng đồng nhất tại mọi cửa hàng trong chuỗi franchise.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 process-section-ckfs">
+    <div class="container">
+        <h2 class="section-title text-center mb-2">Quy trình vận hành tối ưu</h2>
+        <p class="section-desc text-center text-secondary mb-5">
+            Chỉ với 3 bước đơn giản để quản trị toàn bộ hệ thống bếp trung tâm và franchise.
+        </p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card card-ckfs card-process h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="icon-circle-ckfs mx-auto mb-3"><i class="fas fa-book-open"></i></div>
+                        <h5 class="card-title fw-bold text-dark mb-2">Bếp Trung Tâm</h5>
+                        <p class="card-text text-secondary small mb-0">Chuẩn hóa công thức, định lượng và quy trình chế biến tại bếp trung tâm.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-ckfs card-process h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="icon-circle-ckfs mx-auto mb-3"><i class="fas fa-arrow-right"></i></div>
+                        <h5 class="card-title fw-bold text-dark mb-2">Phân phối thông minh</h5>
+                        <p class="card-text text-secondary small mb-0">Đồng bộ nguyên liệu và bán thành phẩm từ bếp trung tâm tới các cửa hàng.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-ckfs card-process h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="icon-circle-ckfs mx-auto mb-3"><i class="fas fa-store"></i></div>
+                        <h5 class="card-title fw-bold text-dark mb-2">Vận hành cửa hàng</h5>
+                        <p class="card-text text-secondary small mb-0">Cửa hàng franchise vận hành theo chuẩn, đảm bảo chất lượng đồng nhất.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container text-center">
+        <h2 class="section-title mb-2">Sẵn sàng bắt đầu?</h2>
+        <p class="section-desc text-secondary mb-4 mx-auto">
+            Quản lý công thức và bếp trung tâm ngay hôm nay. Đăng nhập để truy cập module Công thức.
+        </p>
+        <a asp-page="/RecipesVinhHnts/Index" class="btn btn-ckfs-primary btn-lg">
+            Vào Công thức <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+    </div>
+</section>
