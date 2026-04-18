@@ -1,0 +1,7 @@
+**/.vs
+**/.cursor
+**/bin
+**/obj
+.git
+**/*.user
+**/*.suo
