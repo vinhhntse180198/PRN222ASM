@@ -1,4 +1,6 @@
 
+# Visual Studio / VS Code workspace cache
+.vs/
 
-#Ignore cursor AI rules
-.cursor\rules\codacy.mdc
+# Cursor IDE (rules, local config — không nộp lên repo)
+.cursor/
